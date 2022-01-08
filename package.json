@@ -1,0 +1,29 @@
+{
+  "name": "shopify-backend-challenge-22",
+  "version": "1.0.0",
+  "description": "My version of Shopify's backend intern challenge for Summer 2022",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EliasJRH/Shopify-Backend-Challenge-22.git"
+  },
+  "keywords": [
+    "Shopify",
+    "Backend",
+    "Express",
+    "Mongoose"
+  ],
+  "author": "Elias Hawa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EliasJRH/Shopify-Backend-Challenge-22/issues"
+  },
+  "homepage": "https://github.com/EliasJRH/Shopify-Backend-Challenge-22#readme",
+  "dependencies": {
+    "express": "^4.17.2",
+    "mongoose": "^6.1.5"
+  }
+}
