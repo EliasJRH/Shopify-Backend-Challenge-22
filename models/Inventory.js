@@ -51,7 +51,6 @@ const calculateItemCode = (itemHash) => {
 
 const calculateUPCCode = (itemName) => {
   let itemHash = crypto.createHash("md5").update(itemName).digest("hex");
-  console.log(itemHash)
   let itemCode = calculateItemCode(itemHash);
   let checkSum = calculateCheckSum(itemCode);
 
