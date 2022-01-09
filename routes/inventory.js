@@ -1,11 +1,12 @@
 const { query } = require("express");
 const express = require("express");
+const crypto = require("crypto");
 const router = express.Router();
 const Inventory = require("../models/Inventory");
 
 router.get("/", async (req, res) => {
   try {
-    const allInventory = await Inventory.find(req.query);
+    const allInventory = await Inventory.find();
     res.status(200).send(allInventory);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -32,7 +33,7 @@ router.put("/:id", async (req, res) => {
       throw new Error(`Item with id: ${req.params.id} not found`);
     }
 
-    await Inventory.findOneAndUpdate({ id: req.params.id }, req.body);
+    await Inventory.findByIdAndUpdate(req.params.id, req.body);
     Object.assign(inventoryItem, req.body);
 
     res
@@ -51,6 +52,11 @@ router.put("/:id", async (req, res) => {
     }
   }
 });
+
+router.delete("/", async(req, res) => {
+  await Inventory.deleteMany();
+  res.status(200).send("All inventory deleted");
+})
 
 router.delete("/:id", async (req, res) => {
   try {
