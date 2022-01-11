@@ -69,33 +69,6 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-router.put("/:upc", async (req, res) => {
-  try {
-    const inventoryItem = await Inventory.findById(req.params.upc);
-    if (!inventoryItem) {
-      throw new Error(`Item with UPC code: ${req.params.upc} not found`);
-    }
-
-    await Inventory.findByIdAndUpdate(req.params.id, req.body);
-    Object.assign(inventoryItem, req.body);
-
-    res
-      .status(200)
-      .send(
-        `Inventory item with id: ${req.params.id} updated. \n ${inventoryItem}`
-      );
-  } catch (err) {
-    if (
-      err.message.startsWith("Item with id:") ||
-      err.message.startsWith("Cast to ObjectId failed")
-    ) {
-      res.status(400).send({ message: err.message });
-    } else {
-      res.status(500).send({ message: err.message });
-    }
-  }
-});
-
 router.delete("/", async (req, res) => {
   await Inventory.deleteMany();
   res.status(200).send("All inventory deleted");
