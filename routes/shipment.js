@@ -8,8 +8,6 @@ const verifyInventory = async (listOfInventory) => {
       upc: listOfInventory[i].upc,
     });
 
-    console.log(currentItem.amount, parseInt(listOfInventory[i].amount))
-
     if (!currentItem) {
       throw new Error(
         `Could not find product with UPC code: ${listOfInventory[i].upc}`
@@ -17,8 +15,7 @@ const verifyInventory = async (listOfInventory) => {
     }
 
     if (currentItem.amount < parseInt(listOfInventory[i].amount)) {
-      throw new Error("no")
-      // throw new Error(`Product with UPC code: ${listOfInventory[i].upc} only has ${currentItem.amount} in stock while ${listOfInventory[i].amount} was requested`)
+      throw new Error(`Product with UPC code: ${listOfInventory[i].upc} only has ${currentItem.amount} in stock while ${listOfInventory[i].amount} was requested`)
     }
 
     await Inventory.findByIdAndUpdate(currentItem._id, { amount: currentItem.amount - listOfInventory[i].amount})
@@ -44,7 +41,8 @@ router.post("/", async (req, res) => {
   } catch (err) {
     if (
       err._message == "Shipment validation failed" ||
-      err.message.startsWith("Could not find product")
+      err.message.startsWith("Could not find product with UPC code:") ||
+      err.message.startsWith("Product with UPC code:")
     ) {
       res.status(400).send({ message: err.message });
     } else {
