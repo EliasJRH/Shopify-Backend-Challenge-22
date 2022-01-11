@@ -3,11 +3,20 @@ const router = express.Router();
 const { Inventory } = require("../models");
 
 router.get("/", async (req, res) => {
-  try {
-    const allInventory = await Inventory.find();
-    res.status(200).send(allInventory);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
+  if (req.query.upc) {
+    try {
+      const inventoryFromUpc = await Inventory.findOne({ upc: req.query.upc });
+      res.status(200).send(inventoryFromUpc);
+    } catch (err) {
+      res.status(500).json({ message: err.message });
+    }
+  } else {
+    try {
+      const allInventory = await Inventory.find();
+      res.status(200).send(allInventory);
+    } catch (err) {
+      res.status(500).json({ message: err.message });
+    }
   }
 });
 
