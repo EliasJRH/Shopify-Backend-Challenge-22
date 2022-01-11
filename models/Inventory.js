@@ -69,6 +69,10 @@ const inventorySchema = new mongoose.Schema({
     type: Number,
     default: 1,
   },
+  cost: {
+    type: Number,
+    required: true,
+  },
   upc: {
     type: String,
   },

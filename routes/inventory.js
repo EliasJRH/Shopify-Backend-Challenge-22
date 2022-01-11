@@ -1,6 +1,4 @@
-const { query } = require("express");
 const express = require("express");
-const crypto = require("crypto");
 const router = express.Router();
 const Inventory = require("../models/Inventory");
 
@@ -53,10 +51,10 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-router.delete("/", async(req, res) => {
+router.delete("/", async (req, res) => {
   await Inventory.deleteMany();
   res.status(200).send("All inventory deleted");
-})
+});
 
 router.delete("/:id", async (req, res) => {
   try {
@@ -67,7 +65,9 @@ router.delete("/:id", async (req, res) => {
     }
 
     await Inventory.findByIdAndDelete(req.params.id);
-    res.status(200).send(`Item with id: ${req.params.id} deleted. \n${inventoryToDelete}`);
+    res
+      .status(200)
+      .send(`Item with id: ${req.params.id} deleted. \n${inventoryToDelete}`);
   } catch (err) {
     if (
       err.message.startsWith("Item with id:") ||
