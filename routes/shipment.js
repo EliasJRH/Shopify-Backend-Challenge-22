@@ -3,25 +3,31 @@ const router = express.Router();
 const { Shipment, Inventory } = require("../models");
 
 const verifyInventory = async (listOfInventory) => {
-  for (let i = 0; i < listOfInventory.length; i++) {
-    const currentItem = await Inventory.findOne({
-      upc: listOfInventory[i].upc,
-    });
+  for (var upc in listOfInventory) {
+    const currentItem = await Inventory.findOne({ upc: upc });
 
     if (!currentItem) {
       throw new Error(
-        `Could not find product with UPC code: ${listOfInventory[i].upc}`
+        `Could not find product with UPC code: ${upc}`
       );
     }
 
-    if (currentItem.amount < parseInt(listOfInventory[i].amount)) {
-      throw new Error(`Product with UPC code: ${listOfInventory[i].upc} only has ${currentItem.amount} in stock while ${listOfInventory[i].amount} was requested`)
+    if (currentItem.amount < parseInt(listOfInventory[upc])) {
+      throw new Error(
+        `Product with UPC code: ${upc} only has ${currentItem.amount} in stock while ${listOfInventory[upc].amount} was requested`
+      );
     }
-
-    await Inventory.findByIdAndUpdate(currentItem._id, { amount: currentItem.amount - listOfInventory[i].amount})
-
   }
+
   return true;
+
+};
+
+const updateInventory = async (listOfInventory) => {
+  for (var upc in listOfInventory){
+    const currentItem = await Inventory.findOne({upc: upc})
+    await Inventory.findByIdAndUpdate(currentItem._id, {amount: currentItem.amount - parseInt(listOfInventory[upc])})
+  }
 };
 
 router.get("/", async (req, res) => {
@@ -35,7 +41,10 @@ router.get("/", async (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
-    await verifyInventory(req.body.contents);
+    const hasEnoughStock = await verifyInventory(req.body.contents);
+    if (hasEnoughStock){
+      await updateInventory(req.body.contents)
+    }
     const newShipment = await Shipment.create(req.body);
     res.status(200).send(newShipment);
   } catch (err) {
@@ -51,12 +60,35 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.put("/:id", async (req, res) => {
+  try {
+    const shipment = await Shipment.findById(req.query.id);
+    if (!shipment) {
+      throw new Error(`Shipment with id: ${req.params.id} not found`);
+    }
+
+    if (req.body.contents) {
+      await verifyUpdate(shipment.contents, req.body.contents);
+    }
+
+    await Shipment.findByIdAndUpdate(req.params.id, req.body);
+    Object.assign(shipment, req.body);
+  } catch (err) {
+    if (
+      err.message.startsWith("Shipment with id:") ||
+      err.message.startsWith("Cast to ObjectId failed")
+    ) {
+      res.status(400).send({ message: err.message });
+    }
+  }
+});
+
 router.delete("/", async (req, res) => {
   await Shipment.deleteMany();
   res.status(200).send("All shipments deleted");
 });
 
-router.delete("/:id", async(req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     const shipmentToDelete = await Shipment.findById(req.params.id);
 
@@ -78,6 +110,6 @@ router.delete("/:id", async(req, res) => {
       res.status(500).send({ message: err.message });
     }
   }
-})
+});
 
 module.exports = router;

@@ -10,7 +10,8 @@ const shipmentSchema = new mongoose.Schema({
     required: true,
   },
   contents: {
-    type: Array,
+    type: Map,
+    of: Number,
     required: true,
   },
 });
