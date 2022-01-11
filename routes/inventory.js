@@ -11,6 +11,15 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/:id", async (req, res) => {
+  try {
+    const inventoryFromId = await Inventory.findById(req.params.id);
+    res.status(200).send(inventoryFromId);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
 router.post("/", async (req, res) => {
   try {
     const newInventory = await Inventory.create(req.body);
@@ -29,6 +38,33 @@ router.put("/:id", async (req, res) => {
     const inventoryItem = await Inventory.findById(req.params.id);
     if (!inventoryItem) {
       throw new Error(`Item with id: ${req.params.id} not found`);
+    }
+
+    await Inventory.findByIdAndUpdate(req.params.id, req.body);
+    Object.assign(inventoryItem, req.body);
+
+    res
+      .status(200)
+      .send(
+        `Inventory item with id: ${req.params.id} updated. \n ${inventoryItem}`
+      );
+  } catch (err) {
+    if (
+      err.message.startsWith("Item with id:") ||
+      err.message.startsWith("Cast to ObjectId failed")
+    ) {
+      res.status(400).send({ message: err.message });
+    } else {
+      res.status(500).send({ message: err.message });
+    }
+  }
+});
+
+router.put("/:upc", async (req, res) => {
+  try {
+    const inventoryItem = await Inventory.findById(req.params.upc);
+    if (!inventoryItem) {
+      throw new Error(`Item with UPC code: ${req.params.upc} not found`);
     }
 
     await Inventory.findByIdAndUpdate(req.params.id, req.body);
