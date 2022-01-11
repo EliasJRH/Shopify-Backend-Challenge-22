@@ -21,6 +21,7 @@ app.get("/ping", (req, res) => {
 });
 
 app.use("/inventory", require("./routes/inventory"));
+app.use("/shipment", require("./routes/shipment"));
 
 const PORT = process.env.PORT || 42069;
 

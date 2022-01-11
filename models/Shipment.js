@@ -15,4 +15,6 @@ const shipmentSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("Shipment", shipmentSchema);
+const Shipment = mongoose.model("Shipment", shipmentSchema);
+
+module.exports = Shipment;
