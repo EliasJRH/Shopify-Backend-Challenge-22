@@ -56,4 +56,28 @@ router.delete("/", async (req, res) => {
   res.status(200).send("All shipments deleted");
 });
 
+router.delete("/:id", async(req, res) => {
+  try {
+    const shipmentToDelete = await Shipment.findById(req.params.id);
+
+    if (!shipmentToDelete) {
+      throw new Error(`Shipment with id: ${req.params.id} not found`);
+    }
+
+    await Shipment.findByIdAndDelete(req.params.id);
+    res
+      .status(200)
+      .send(`Item with id: ${req.params.id} deleted. \n${shipmentToDelete}`);
+  } catch (err) {
+    if (
+      err.message.startsWith("Shipment with id:") ||
+      err.message.startsWith("Cast to ObjectId failed")
+    ) {
+      res.status(400).send({ message: err.message });
+    } else {
+      res.status(500).send({ message: err.message });
+    }
+  }
+})
+
 module.exports = router;
