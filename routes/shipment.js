@@ -107,6 +107,15 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/:id", async (req, res) => {
+  try {
+    const shipmentFromId = await Shipment.findById(req.params.id);
+    res.status(200).send(shipmentFromId);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
 router.post("/", async (req, res) => {
   try {
     const hasEnoughStock = await verifyInventory(req.body.contents);
