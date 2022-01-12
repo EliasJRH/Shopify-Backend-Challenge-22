@@ -1,2 +1,2 @@
-module.exports.Inventory = require("./Inventory")
-module.exports.Shipment = require("./Shipment")
+module.exports.Inventory = require("./inventory.model")
+module.exports.Shipment = require("./shipment.model")
