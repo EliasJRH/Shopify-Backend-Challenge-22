@@ -82,7 +82,7 @@ router.delete("/", async (req, res) => {
 
 router.delete("/:id", async (req, res) => {
   try {
-    const inventoryToDelete = await inventoryService.deleteInventoryById();
+    const inventoryToDelete = await inventoryService.deleteInventoryById(req.params.id);
     res
       .status(200)
       .send(`Item with id: ${req.params.id} deleted. \n${inventoryToDelete}`);

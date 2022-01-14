@@ -46,7 +46,7 @@ const createNewInventory = async (inventoryInfo) => {
  * Update inventory by id
  * @param {ObjectId} id
  * @param {Object} updateInfo
- * @returns
+ * @returns {Promise<Inventory>}
  */
 const updateInventoryById = async (id, updateInfo) => {
   const inventoryToUpdate = await Inventory.findById(id);
