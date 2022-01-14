@@ -67,6 +67,7 @@ const inventorySchema = new mongoose.Schema({
   },
   amount: {
     type: Number,
+    min: 0,
     default: 1,
   },
   cost: {
