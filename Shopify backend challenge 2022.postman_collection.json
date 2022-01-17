@@ -1,0 +1,938 @@
+{
+	"info": {
+		"_postman_id": "14a7a085-f6a0-4904-9914-6cb24989e645",
+		"name": "Shopify backend challenge 2022",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Inventory requests",
+			"item": [
+				{
+					"name": "Create inventory item",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Apples",
+									"type": "default"
+								},
+								{
+									"key": "amount",
+									"value": "2000",
+									"type": "default"
+								},
+								{
+									"key": "description",
+									"value": "description",
+									"type": "default"
+								},
+								{
+									"key": "cost",
+									"value": "4",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:42069/inventory/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "42069",
+							"path": [
+								"inventory",
+								""
+							]
+						},
+						"description": "POST request. Creates inventory item"
+					},
+					"response": [
+						{
+							"name": "Create inventory",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Banana",
+											"type": "default"
+										},
+										{
+											"key": "amount",
+											"value": "2000",
+											"type": "default"
+										},
+										{
+											"key": "description",
+											"value": "Very nice bananas imported from Southeast Asia",
+											"type": "default"
+										},
+										{
+											"key": "cost",
+											"value": "1",
+											"type": "default"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:42069/inventory/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "42069",
+									"path": [
+										"inventory",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "160"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a0-bY23N9Gf8ExtI6B/Az05edr9p08\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 11 Jan 2022 14:37:09 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"apple\",\n    \"description\": \"Very nice banans imported from Southeast Asia\",\n    \"amount\": 2,\n    \"cost\": 1,\n    \"_id\": \"61dd96151ace9ec01a75fb45\",\n    \"upc\": \"420690138706\",\n    \"__v\": 0\n}"
+						}
+					]
+				},
+				{
+					"name": "Retrieve all inventory items",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:42069/inventory/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "42069",
+							"path": [
+								"inventory",
+								""
+							]
+						},
+						"description": "GET request. Returns all inventory and their current amounts"
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve inventory item by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:42069/inventory/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "42069",
+							"path": [
+								"inventory",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "61e189b2d1c1f732bc1b4317"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Retrieve inventory item by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:42069/inventory/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "42069",
+									"path": [
+										"inventory",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "61dd8fc85514017efd03c1c6"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "161"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a1-mXVMQpwJ7sySdwIOK/rzv9hn4Lk\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 11 Jan 2022 15:19:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"_id\": \"61dd8fc85514017efd03c1c6\",\n    \"name\": \"banana\",\n    \"description\": \"Very nice banans imported from Southeast Asia\",\n    \"amount\": 0,\n    \"cost\": 1,\n    \"upc\": \"420690723025\",\n    \"__v\": 0\n}"
+						}
+					]
+				},
+				{
+					"name": "Retrieve inventory item by UPC",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:42069/inventory/?upc=420690924460",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "42069",
+							"path": [
+								"inventory",
+								""
+							],
+							"query": [
+								{
+									"key": "upc",
+									"value": "420690924460"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Retrieve inventory item by UPC",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:42069/inventory/?upc=420690723025",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "42069",
+									"path": [
+										"inventory",
+										""
+									],
+									"query": [
+										{
+											"key": "upc",
+											"value": "420690723025"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "161"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a1-mXVMQpwJ7sySdwIOK/rzv9hn4Lk\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 11 Jan 2022 15:28:48 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"_id\": \"61dd8fc85514017efd03c1c6\",\n    \"name\": \"banana\",\n    \"description\": \"Very nice banans imported from Southeast Asia\",\n    \"amount\": 0,\n    \"cost\": 1,\n    \"upc\": \"420690723025\",\n    \"__v\": 0\n}"
+						}
+					]
+				},
+				{
+					"name": "Update inventory item by ID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "amount",
+									"value": "2000",
+									"type": "default"
+								},
+								{
+									"key": "name",
+									"value": "Red Oranges",
+									"type": "default",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:42069/inventory/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "42069",
+							"path": [
+								"inventory",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "61e18a283b170eba841e9c5f"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update inventory item by ID",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:42069/inventory/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "42069",
+									"path": [
+										"inventory",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "61dddf58c3caeda2fbdd9568"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "220"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"dc-M/r9LiXrLRiH4tCRpG/tXL2zcwQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 12 Jan 2022 01:08:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "Inventory item with id: 61dddf58c3caeda2fbdd9568 updated. \n {\n  _id: new ObjectId(\"61dddf58c3caeda2fbdd9568\"),\n  name: 'Bananas',\n  description: 'description',\n  amount: 2000,\n  cost: 4,\n  upc: '420690131776',\n  __v: 0\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete inventory by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:42069/inventory/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "42069",
+							"path": [
+								"inventory",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "61e189b5d1c1f732bc1b4315"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete inventory by id",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:42069/inventory/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "42069",
+									"path": [
+										"inventory",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "61ddde7d4bb9dd1272766f49"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Delete all inventory",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:42069/inventory/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "42069",
+							"path": [
+								"inventory",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Shipment requests",
+			"item": [
+				{
+					"name": "Get shipments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:42069/shipment/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "42069",
+							"path": [
+								"shipment",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get shipment by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:42069/shipment/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "42069",
+							"path": [
+								"shipment",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "61e18a7e3572495efb57d044"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get shipment by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:42069/shipment/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "42069",
+									"path": [
+										"shipment",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "61de2a0042f972ffb9dc6734"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Create shipment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "location",
+									"value": "123 Sesame Street",
+									"type": "default"
+								},
+								{
+									"key": "dateOfArrival",
+									"value": "11/1/2022",
+									"type": "default"
+								},
+								{
+									"key": "contents[420690131776]",
+									"value": "5",
+									"type": "default"
+								},
+								{
+									"key": "contents[420690622779]",
+									"value": "5",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:42069/shipment/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "42069",
+							"path": [
+								"shipment",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create shipment",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "location",
+											"value": "123 Sesame Street",
+											"type": "default"
+										},
+										{
+											"key": "dateOfArrival",
+											"value": "11/1/2022",
+											"type": "default"
+										},
+										{
+											"key": "contents[420690131776]",
+											"value": "5",
+											"type": "default"
+										},
+										{
+											"key": "contents[420690622779]",
+											"value": "5",
+											"type": "default"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:42069/shipment/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "42069",
+									"path": [
+										"shipment",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "162"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a2-fKzGUkXx4RsHJ0LQ6Ff2Sjgyfhs\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 12 Jan 2022 01:08:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"location\": \"4750 Bank Street\",\n    \"dateOfArrival\": \"2022-11-01T04:00:00.000Z\",\n    \"contents\": {\n        \"420690131776\": 5,\n        \"420690622779\": 5\n    },\n    \"_id\": \"61de2a0042f972ffb9dc6734\",\n    \"__v\": 0\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete all shipments",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:42069/shipment/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "42069",
+							"path": [
+								"shipment",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete shipment by ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:42069/shipment/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "42069",
+							"path": [
+								"shipment",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "61e18a7e3572495efb57d044"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete shipment by ID",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:42069/shipment/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "42069",
+									"path": [
+										"shipment",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "61de28e3bad7e17419f60ec0"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Update shipment by ID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "contents[420690131776]",
+									"value": "2001",
+									"type": "default"
+								},
+								{
+									"key": "contents[420690924460]",
+									"value": "5",
+									"type": "default"
+								},
+								{
+									"key": "location",
+									"value": "22 Wallaby Way",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:42069/shipment/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "42069",
+							"path": [
+								"shipment",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "61e18e676c6d4a81fd8915e5"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update shipment by ID",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "contents[420690131776]",
+											"value": "10",
+											"type": "default"
+										},
+										{
+											"key": "contents[420690924460]",
+											"value": "5",
+											"type": "default"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:42069/shipment/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "42069",
+									"path": [
+										"shipment",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "61de2a0042f972ffb9dc6734"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "163"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a3-jwGeWaILm1pid3QK3Ag9KjUuI9s\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 12 Jan 2022 01:08:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"_id\": \"61de2a0042f972ffb9dc6734\",\n    \"location\": \"4750 Bank Street\",\n    \"dateOfArrival\": \"2022-11-01T04:00:00.000Z\",\n    \"contents\": {\n        \"420690131776\": 10,\n        \"420690924460\": 5\n    },\n    \"__v\": 0\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Ping",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:42069/ping",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "42069",
+					"path": [
+						"ping"
+					]
+				},
+				"description": "Simple Ping request to ensure that the server is running and responding to requests"
+			},
+			"response": []
+		}
+	]
+}
