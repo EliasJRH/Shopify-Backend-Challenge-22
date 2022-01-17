@@ -54,8 +54,8 @@ const updateInventoryById = async (id, updateInfo) => {
     throw new Error(`Item with id: ${id} not found`);
   }
 
-  if (updateInfo.name){
-    updateInfo.upc = calculateUPC(updateInfo.name)
+  if (updateInfo.name) {
+    updateInfo.upc = calculateUPC(updateInfo.name);
   }
 
   await Inventory.findByIdAndUpdate(id, updateInfo);
@@ -90,7 +90,7 @@ const deleteInventoryById = async (id) => {
 
 /**
  * Calculutes checksum from manufacturer code and item code
- * @param {string} itemCode 
+ * @param {string} itemCode
  * @returns {number} - The last number in a UPC called the checksum
  */
 const calculateCheckSum = (itemCode) => {
@@ -146,7 +146,7 @@ const calculateItemCode = (itemHash) => {
 
 /**
  * Calculates UPC for an item from its name
- * @param {string} itemName 
+ * @param {string} itemName
  * @returns {string} - UPC of item
  */
 const calculateUPC = (itemName) => {
@@ -165,5 +165,5 @@ module.exports = {
   updateInventoryById,
   deleteAllInventory,
   deleteInventoryById,
-  calculateUPC
+  calculateUPC,
 };

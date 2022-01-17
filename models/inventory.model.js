@@ -4,7 +4,7 @@ const inventorySchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
   },
   description: {
     type: String,
@@ -19,12 +19,12 @@ const inventorySchema = new mongoose.Schema({
     required: true,
   },
   upc: {
-    type: String
+    type: String,
   },
 });
 
 inventorySchema.pre("save", function (next) {
-  const { calculateUPC } = require("../services/inventory.service")
+  const { calculateUPC } = require("../services/inventory.service");
   this.upc = calculateUPC(this.name);
   next();
 });

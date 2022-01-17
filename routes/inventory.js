@@ -36,7 +36,7 @@ router.get("/:id", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     const newInventory = await inventoryService.createNewInventory(req.body);
-    res.status(200).send(newInventory);
+    res.status(201).send(newInventory);
   } catch (err) {
     if (
       err.message == "Inventory validation failed" ||
@@ -82,7 +82,9 @@ router.delete("/", async (req, res) => {
 
 router.delete("/:id", async (req, res) => {
   try {
-    const inventoryToDelete = await inventoryService.deleteInventoryById(req.params.id);
+    const inventoryToDelete = await inventoryService.deleteInventoryById(
+      req.params.id
+    );
     res
       .status(200)
       .send(`Item with id: ${req.params.id} deleted. \n${inventoryToDelete}`);

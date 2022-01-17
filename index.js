@@ -26,3 +26,5 @@ app.use("/shipment", require("./routes/shipment"));
 const PORT = process.env.PORT || 42069;
 
 app.listen(PORT, () => console.log(`Server started in port ${PORT}`));
+
+module.exports = app;

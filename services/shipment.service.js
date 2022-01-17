@@ -2,8 +2,8 @@ const { Shipment, Inventory } = require("../models");
 
 /**
  * Checks current inventory to see if shipment can be made
- * @param {Map} listOfInventory 
- * @returns {Boolean} - true if requested inventory is available for shipment, error otherwise 
+ * @param {Map} listOfInventory
+ * @returns {Boolean} - true if requested inventory is available for shipment, error otherwise
  */
 const verifyInventory = async (listOfInventory) => {
   for (var upc in listOfInventory) {
@@ -25,8 +25,8 @@ const verifyInventory = async (listOfInventory) => {
 
 /**
  * Checks inventory to see if shipment can be made after possibly returning inventory from old list of inventory
- * @param {Map} listOfInventory 
- * @param {Map} newList 
+ * @param {Map} listOfInventory
+ * @param {Map} newList
  * @returns {Boolean} - true if requested inventory update can be made after returning inventory in current shipment, error otherwise
  */
 const verifyInventoryUpdate = async (listOfInventory, newList) => {
@@ -61,7 +61,7 @@ const verifyInventoryUpdate = async (listOfInventory, newList) => {
 
 /**
  * Update inventory after shipment is made
- * @param {Map} listOfInventory 
+ * @param {Map} listOfInventory
  */
 const updateInventory = async (listOfInventory) => {
   for (var upc in listOfInventory) {
@@ -74,8 +74,8 @@ const updateInventory = async (listOfInventory) => {
 
 /**
  * Update inventory after shipment update is made
- * @param {Map} listOfInventory 
- * @param {Map} newList 
+ * @param {Map} listOfInventory
+ * @param {Map} newList
  */
 const updateNewInventory = async (listOfInventory, newList) => {
   //For each upc code in the new list
@@ -121,7 +121,7 @@ const getAllShipments = async () => {
 
 /**
  * Get shipment by id
- * @param {ObjectId} id 
+ * @param {ObjectId} id
  * @returns {Promise<Shipment>}
  */
 const getShipmentById = async (id) => {
@@ -131,7 +131,7 @@ const getShipmentById = async (id) => {
 
 /**
  * Create shipment
- * @param {Object} body 
+ * @param {Object} body
  * @returns {Promise<Shipment>}
  */
 const createShipment = async (body) => {
@@ -145,8 +145,8 @@ const createShipment = async (body) => {
 
 /**
  * Update shipment by id
- * @param {ObjectId} id 
- * @param {Object} updateBody 
+ * @param {ObjectId} id
+ * @param {Object} updateBody
  * @returns {Promise<Shipment>}
  */
 const updateShipment = async (id, updateBody) => {
@@ -180,8 +180,8 @@ const deleteAllShipments = async () => {
 
 /**
  * Delete shipment by id
- * @param {ObjectId} id 
- * @returns 
+ * @param {ObjectId} id
+ * @returns
  */
 const deleteShipmentById = async (id) => {
   const shipmentToDelete = await Shipment.findById(id);
