@@ -1,4 +1,4 @@
-# Shopify Backend Challenge 2022 🛒
+# Shopify Backend Challenge 2022 - Inventory management system 🛒
 
 Hi there 👋
 
