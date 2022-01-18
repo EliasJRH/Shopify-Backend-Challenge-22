@@ -11,7 +11,7 @@ The project was completed using Node.js, Express.js and MongoDB (mongoose). Node
 1. Ensure that you have [Node.js](https://nodejs.org/en/download/) installed. This project was made using Node v16.3.1 but any LTS version of Node should be sufficient
 2. Ensure that you have [MongoDB](https://www.mongodb.com/) installed and setup
 3. Ensure that you have [Git](https://git-scm.com/) installed and clone the repository using `git clone https://github.com/EliasJRH/Shopify-Backend-Challenge-22.git`
-4. (Recommended) Ensure that you have some tool to send HTTP requests. I used [Postman](https://www.postman.com/) (Note: if you do end up using Postman, I've exported a collection of premade HTTP requests specifically for this project!)
+4. (Recommended) Ensure that you have some tool to send HTTP requests. I used [Postman](https://www.postman.com/) (Note: if you do end up using Postman, I've exported a collection of premade HTTP requests specifically for this project! It can be found [here](https://github.com/EliasJRH/Shopify-Backend-Challenge-22/blob/main/Shopify%20backend%20challenge%202022.postman_collection.json)!) 
 
 ## Running the project
 
