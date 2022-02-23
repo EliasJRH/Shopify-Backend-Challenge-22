@@ -50,6 +50,9 @@ Now that you have this project cloned, it's time to run it!
 
 Examples for request bodies and specific routes can be found in the postman export
 
+## Tests
+To run some basic integration tests, run `npm run test` 
+  
 ## Personal addendum
 
 This challenge was neat to do as it brought me back to my days working at a grocery store. I'm glad I was finally able to submit a proper project this year.
