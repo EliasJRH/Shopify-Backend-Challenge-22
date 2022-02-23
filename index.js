@@ -3,10 +3,14 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 
-mongoose.connect(process.env.DATABASE_URL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose
+  .connect(process.env.DATABASE_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    app.listen(PORT, () => console.log(`Server started in port ${PORT}`));
+  });
 
 const db = mongoose.connection;
 
@@ -24,7 +28,5 @@ app.use("/inventory", require("./routes/inventory"));
 app.use("/shipment", require("./routes/shipment"));
 
 const PORT = process.env.PORT || 42069;
-
-app.listen(PORT, () => console.log(`Server started in port ${PORT}`));
 
 module.exports = app;

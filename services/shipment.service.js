@@ -99,7 +99,7 @@ const updateNewInventory = async (listOfInventory, newList) => {
 
   //For each upc code in the old list
   for (const upc of listOfInventory.keys()) {
-    //If the upc doesn't exist in the old list (item was removed from shipment)
+    //If the upc doesn't exist in the new list (item was removed from shipment)
     if (newList[upc] === undefined) {
       //Add items back to inventory
       const currentItem = await Inventory.findOne({ upc: upc });
