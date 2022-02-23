@@ -4,7 +4,7 @@ Hi there 👋
 
 My name is Elias and this is my stab at Shopify's Summer 2022 backend intern challenge
 
-The project was completed using Node.js, Express.js and MongoDB (mongoose). Nodemon was also used primarily during the development of this project
+The project was completed using Node.js, Express.js and MongoDB (mongoose). Nodemon was also used primarily during the development of this project. Jest and Supertest were used for integration tests.
 
 ## Before cloning
 
