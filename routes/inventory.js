@@ -39,7 +39,7 @@ router.post("/", async (req, res) => {
     res.status(201).send(newInventory);
   } catch (err) {
     if (
-      err.message == "Inventory validation failed" ||
+      err.message.startsWith("Inventory validation failed") ||
       err.message.startsWith("Inventory with name:") ||
       err.message.startsWith("E11000 duplicate key error collection:")
     ) {
@@ -52,16 +52,17 @@ router.post("/", async (req, res) => {
 
 router.put("/:id", async (req, res) => {
   try {
-    const inventoryItem = await inventoryService.updateInventoryById(
+    const updatedInventory = await inventoryService.updateInventoryById(
       req.params.id,
       req.body
     );
 
     res
       .status(200)
-      .send(
-        `Inventory item with id: ${req.params.id} updated. \n ${inventoryItem}`
-      );
+      .send({
+        message: `Inventory item with id: ${req.params.id} updated.`,
+        updatedInventory
+      });
   } catch (err) {
     if (
       err.message.startsWith("Item with id:") ||
@@ -77,17 +78,20 @@ router.put("/:id", async (req, res) => {
 
 router.delete("/", async (req, res) => {
   await inventoryService.deleteAllInventory();
-  res.status(200).send("All inventory deleted");
+  res.status(204).send("All inventory deleted");
 });
 
 router.delete("/:id", async (req, res) => {
   try {
-    const inventoryToDelete = await inventoryService.deleteInventoryById(
+    const deletedInventory = await inventoryService.deleteInventoryById(
       req.params.id
     );
     res
       .status(200)
-      .send(`Item with id: ${req.params.id} deleted. \n${inventoryToDelete}`);
+      .send({
+        message: `Inventory item with id: ${req.params.id} deleted.`,
+        deletedInventory
+      });
   } catch (err) {
     if (
       err.message.startsWith("Item with id:") ||
