@@ -56,3 +56,7 @@ To run some basic integration tests, run `npm run test`
 ## Personal addendum
 
 This challenge was neat to do as it brought me back to my days working at a grocery store. I'm glad I was finally able to submit a proper project this year.
+  
+---
+  
+Success! This project helped me land a summer backend intern position at Shopify! If you have any questions about this project, feel free to shoot me an email.
